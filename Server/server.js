@@ -21,6 +21,18 @@ mongoose.connect(connection_url,{useNewUrlParser: true, useUnifiedTopology: true
 // api routing
 app.get('/',(req,res)=>res.status(200).send("Hello World!"))
 
+
+app.get('/getusers',(req,res)=>{
+    Message.find((err,data) => {
+        if(err){
+            res.status(500).send(err)
+        }
+        else{
+            res.status(201).send(data)
+        }
+    })
+})
+
 app.post('/postform',(req,res)=>{
     const message = req.body
     Message.create(message, (err, data)=>{
