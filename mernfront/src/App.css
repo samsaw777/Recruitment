@@ -1,38 +1,99 @@
-.App {
+.headerDiv{
+  width: 100%;
+  float: left;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.formPart{
+  width: 100%;
+  float: left;
+  margin-top: 20px;
+}
+
+.partOne{
+  width: 100%;
+  float: left;
+  border: 1px solid #c4c4c4;
+}
+
+.partHead{
+  width: 100%;
+  float: left;
+  background: #c4c4c4;
+}
+
+.phead{
+  width: 100%;
+  float: left;
+  padding: 10px;
+}
+
+.inputPart{
+  width: 100%;
+  float: left;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+label{
+  padding-left: 15px;
+}
+
+input{
+  width: 100%;
+  float: left;
+  padding-left: 5px;
+}  
+
+.row{
+  margin-top: 10px;
+}
+
+.Row{
+  margin: 0;
+}
+.partTwo{
+  margin-top: 10px;
+  width: 100%;
+  float: left;
+  border: 1px solid #c4c4c4;
+}
+p{
+  padding-left:15px;
+  padding-right: 15px;
+  text-align: justify;
+}
+
+button{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.getDiv{
+  width: 100%;
+  float: left;
+}
+
+@media screen and (max-width: 768px){
+  .btn{
+    display: block;
+  }
+.lu{
+  position: fixed;
+  width: 100%;
+  float: left;
+  background-color: #c4c4cc;
+  top: 50px;
+  left: 0px;
+  padding: 0px;
   text-align: center;
 }
+   li{
+    display: block;
+    height: auto;
+    padding: 15px;
+  } 
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
