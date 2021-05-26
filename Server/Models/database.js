@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-const recschema = mongoose.Schema({fullname:{
+const recschema = mongoose.Schema({
+    fullname:{
     type: String,
     require: true
 },
@@ -16,7 +17,7 @@ city:{
     type: String,
     require: true
 },
-district:{
+state:{
     type: String,
     require: true
 },
@@ -36,38 +37,6 @@ email:{
     type: String,
     require: true
 },
-date:{
-    type: String,
-    require: true
-},
-gender:{
-    type: String,
-    require: true
-},
-school:{
-    type: String,
-    require: true
-},
-college:{
-    type: String,
-    require: true
-},
-yearsa:{
-    type: Number,
-    require: true
-},
-astudy:{
-    type: String,
-    require: true
-},
-graduteschool:{
-    type: String,
-    require: true
-},
-yearsas:{
-    type: Number,
-    require: true
-},
 skills:{
     type: String,
     require: true
@@ -76,22 +45,14 @@ qualification:{
     type: String,
     require: true
 },
-current:{
+education:{
     type: String,
     require: true
 },
-position:{
-    type: String,
+birthdate:{
+    type: Date,
     require: true
 },
-salary:{
-    type: Number,
-    require: true
-},
-reason:{
-    type: String,
-    require: true
-}
 },{
 timestamps: true 
 })
