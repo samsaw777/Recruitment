@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
 // const axios = require('axios')
-import Axios from './Axios'
+// import Axios from './Axios'
 import {Container} from 'react-bootstrap';
 import {Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+const Axios = require('axios')
+
 const initalState = {
     fullname:'',
     fullnameErr:'',
@@ -45,11 +47,11 @@ function Recruitment() {
             [name]: value,
         })
     }
-    
+
     const addToData = event =>{
         event.preventDefault();
         var complete = initalstate.fullname +' '+ initalstate.secondname+ ' '+ initalstate.lastname
-        Axios.post('/postform',{
+        Axios.post('/',{
           fullname: complete,
           streetone: initalstate.laneone,
           streettwo: initalstate.lanetwo,
@@ -67,7 +69,7 @@ function Recruitment() {
           console.log(res, 'Signature added!');
           setInitialState(initalState)
         }).catch(err=>{
-          console.log(err,'Signature not added');
+          console.log(err.message,'Signature not added');
         });
       }
     return (

@@ -50,7 +50,7 @@ education:{
     require: true
 },
 birthdate:{
-    type: Date,
+    type: String,
     require: true
 },
 },{

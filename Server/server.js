@@ -33,7 +33,7 @@ app.get('/getusers',(req,res)=>{
     })
 })
 
-app.post('/postform',(req,res)=>{
+app.post('/',(req,res)=>{
     const message = req.body
     Message.create(message, (err, data)=>{
         if (err){
