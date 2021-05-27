@@ -4,42 +4,31 @@ import React,{useState} from 'react'
 import {Container} from 'react-bootstrap';
 import {Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-const Axios = require('axios')
+import Validate from './Validate'
+
 
 const initalState = {
     fullname:'',
-    fullnameErr:'',
     secondname:'',
-    secondErr:'',
     lastname:'',
-    lastErr:'',
     laneone:'',
-    laneoneErr:'',
     lanetwo:'',
-    lanetwoErr:'',
     city:'',
-    cityErr:'',
     state:'',
-    stateErr:'',
     pincode:'',
-    pincodeErr:'',
     country:'',
-    countryErr:'',
     phonenumber:'',
-    phoneErr:'',
     email:'',
-    emailErr:'',
     birthdate:'',
-    birthErr:'',
     education:'',
-    educationErr:'',
     skills:'',
-    skillsErr:'',
     qualification:'',
-    qualificationErr:''
   }
+
 function Recruitment() {
     var [initalstate, setInitialState] = useState(initalState)
+    const [error, setError] = useState({})
+    console.log(error)
     const handleInput = (e)=>{
         const {name, value} = e.target
         setInitialState({
@@ -48,29 +37,13 @@ function Recruitment() {
         })
     }
 
+    // const validate = value => {
+      
+    // }
+
     const addToData = event =>{
         event.preventDefault();
-        var complete = initalstate.fullname +' '+ initalstate.secondname+ ' '+ initalstate.lastname
-        Axios.post('/',{
-          fullname: complete,
-          streetone: initalstate.laneone,
-          streettwo: initalstate.lanetwo,
-          city: initalstate.city,
-          state: initalstate.state,
-          pincode: initalstate.pincode,
-          country: initalstate.country,
-          number: initalstate.phonenumber,
-          email: initalstate.email,
-          birthdate: initalstate.birthdate,
-          education: initalstate.education,
-          skills: initalstate.skills,
-          qualification: initalstate.qualification
-        }).then(res =>{
-          console.log(res, 'Signature added!');
-          setInitialState(initalState)
-        }).catch(err=>{
-          console.log(err.message,'Signature not added');
-        });
+        setError(Validate(initalstate,setInitialState,initalState))
       }
     return (
         <div>
@@ -93,7 +66,7 @@ function Recruitment() {
           value={initalstate.fullname} 
           onChange={handleInput} 
           placeholder="First Name"/>
-          {/* <div style={{color: 'red'}}>{this.state.fullnameErr}</div> */}
+          <div style={{color: 'red'}}>{error.fullname}</div>
                 </Col>
            <Col lg={4} md={4} sm={12}>
            <input type="text"
@@ -102,7 +75,7 @@ function Recruitment() {
            onChange={handleInput}
            placeholder="Second Name"
            />
-           {/* <div style={{color: 'red'}}>{this.state.secondErr}</div> */}
+           <div style={{color: 'red'}}>{error.secondname}</div>
            </Col>
            <Col lg={4} md={4} sm={12}>
             <input 
@@ -112,7 +85,7 @@ function Recruitment() {
             onChange={handleInput}
             placeholder="Last Name"
             />
-            {/* <div style={{color: 'red'}}>{this.state.lastErr}</div> */}
+            <div style={{color: 'red'}}>{error.lastname}</div>
            </Col>
           </Row>
             </Col>
@@ -133,7 +106,7 @@ function Recruitment() {
                     onChange={handleInput}
                     placeholder="Street Address"
                     />
-                    {/* <div style={{color: 'red'}}>{this.state.laneoneErr}</div> */}
+                    <div style={{color: 'red'}}>{error.laneone}</div>
                   </Col>
                 </Row>
                 <Row className="row">
@@ -145,7 +118,7 @@ function Recruitment() {
                  onChange={handleInput}
                  placeholder="Street Address Line 1"
                  />
-                 {/* <div style={{color: 'red'}}>{this.state.lanetwoErr}</div> */}
+                 <div style={{color: 'red'}}>{error.lanetwo}</div>
                   </Col>
                 </Row>
                 <Row className="row">
@@ -157,7 +130,7 @@ function Recruitment() {
                   onChange={handleInput}
                   placeholder="City"
                   />
-                  {/* <div style={{color: 'red'}}>{this.state.cityErr}</div> */}
+                  <div style={{color: 'red'}}>{error.city}</div>
                   </Col>
                   <Col lg={4} md={4} sm={12}>
                   <input 
@@ -167,7 +140,7 @@ function Recruitment() {
                   onChange={handleInput}
                   placeholder="State"
                   />
-                  {/* <div style={{color: 'red'}}>{this.state.stateErr}</div> */}
+                  <div style={{color: 'red'}}>{error.state}</div>
                   </Col>
                 </Row>
                 <Row className="row">
@@ -179,7 +152,7 @@ function Recruitment() {
                   onChange={handleInput}
                   placeholder="Pincode"
                   />
-                  {/* <div style={{color: 'red'}}>{this.state.pincodeErr}</div> */}
+                  <div style={{color: 'red'}}>{error.pincode}</div>
                   </Col>
                   <Col lg={4} md={4} sm={12}>
                   <input 
@@ -189,7 +162,7 @@ function Recruitment() {
                   onChange={handleInput}
                   placeholder="Country"
                   />
-                  {/* <div style={{color: 'red'}}>{this.state.countryErr}</div> */}
+                  <div style={{color: 'red'}}>{error.country}</div>
                   </Col>
                 </Row>
               </Col>
@@ -209,7 +182,7 @@ function Recruitment() {
                   onChange={handleInput}
                   placeholder="Phone Number"
                   />
-                  {/* <div style={{color: 'red'}}>{this.state.phoneErr}</div> */}
+                  <div style={{color: 'red'}}>{error.phonenumber}</div>
                     </Col>
                   </Row>
                 </Col>
@@ -230,7 +203,7 @@ function Recruitment() {
                   onChange={handleInput}
                   placeholder="Eg: name@example.com"
                   />
-                  {/* <div style={{color: 'red'}}>{this.state.emailErr}</div> */}
+                  <div style={{color: 'red'}}>{error.email}</div>
                     </Col>
                   </Row>
                 </Col>
@@ -251,7 +224,7 @@ function Recruitment() {
                   onChange={handleInput}
                   placeholder="MM/DD/YY"
                   />
-                  {/* <div style={{color: 'red'}}>{this.state.birthErr}</div> */}
+                  <div style={{color: 'red'}}>{error.birthday}</div>
                     </Col>
                   </Row>
                 </Col>
@@ -279,7 +252,7 @@ function Recruitment() {
                       value={initalstate.education}
                       onChange={handleInput}
                       ></textarea>
-                       {/* <div style={{color: 'red'}}>{this.state.educationErr}</div> */}
+                       <div style={{color: 'red'}}>{error.education}</div>
                       </Col>
                     </Row>
                   </Col>
@@ -307,7 +280,7 @@ function Recruitment() {
                       value={initalstate.skills}
                       onChange={handleInput}
                       ></textarea>
-                       {/* <div style={{color: 'red'}}>{this.state.skillsErr}</div> */}
+                       <div style={{color: 'red'}}>{error.skills}</div>
                       </Col>
                     </Row>
                   </Col>
@@ -327,7 +300,7 @@ function Recruitment() {
                       value={initalstate.qualification}
                       onChange={handleInput}
                       ></textarea>
-                       {/* <div style={{color: 'red'}}>{this.state.qualificationErr}</div> */}
+                       <div style={{color: 'red'}}>{error.qualification}</div>
                       </Col>
                     </Row>
                   </Col>
@@ -343,7 +316,7 @@ function Recruitment() {
             <p>By clicking the submit button below, I cerity that all of the information provided by me on this application is true and complete, and I understand that if any false information, ommissions, or misrepresentations are discovered, my application may be rejected and, if I am employed, my employement may be terminated at any time. </p>
             <p>In consideration of my employment, I agree to conform to the company's rules and regulations, and I agree that my employment and compenstation can be terminated, with or without cause, and with or without notice, at any time, at either my or the company's option.</p>
             <p>I also understand and agree that the terms and conditions of my employment may be changed, with or without cause, and with or without notice, at any time by the company.</p>
-            <button type="submit">submit</button>
+            <button className='button'>submit</button>
           </div>
           </div>
 
