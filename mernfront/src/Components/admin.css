@@ -1,0 +1,15 @@
+.maingetdiv{
+    width: 100%;
+}
+
+.userdiv{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.seebtn{
+    margin-bottom: 0px;
+    border: 1px solid #000;
+    padding: 10px;
+}

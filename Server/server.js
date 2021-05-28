@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const Message = require('./Models/database')
 const bodyparser = require('body-parser')
 require('dotenv').config()
+var ObjectId = require('mongodb').ObjectID
 const password = process.env.Database_Password
 
 //Middleware
@@ -19,7 +20,7 @@ mongoose.connect(connection_url,{useNewUrlParser: true, useUnifiedTopology: true
 
 
 // api routing
-app.get('/',(req,res)=>res.status(200).send("Hello World!"))
+// app.get('/',(req,res)=>res.status(200).send("Hello World!"))
 
 
 app.get('/getusers',(req,res)=>{
@@ -31,6 +32,12 @@ app.get('/getusers',(req,res)=>{
             res.status(201).send(data)
         }
     })
+})
+
+app.get('/userinnfo/:id',(req,res)=>{
+    Message.findById(ObjectId(req.params.id))
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(500).send(err))
 })
 
 app.post('/',(req,res)=>{

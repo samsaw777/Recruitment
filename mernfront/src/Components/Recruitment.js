@@ -48,6 +48,11 @@ function Recruitment() {
     return (
         <div>
             <Container>
+            <div className="headerDiv">
+        <h1>RMS Connect</h1>
+        <h3>Recruitment Application</h3>
+        <h6>Resources are hired to give results, not resources!</h6>
+      </div>
         <form onSubmit={addToData}> 
         <div className="partOne">
           <div className="partHead">
