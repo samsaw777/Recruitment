@@ -6,10 +6,71 @@
     width: 100%;
     display: grid;
     grid-template-columns: 33% 33% 33%;
+    padding: 20px;
 }
 
 .seebtn{
     margin-bottom: 0px;
     border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.userinfo{
+    margin-top: 10px;
     padding: 10px;
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.userinfo > a{
+    text-decoration: none;
+    color: #000;
+}
+
+.displayfullmain{
+    width: 100%;
+    padding-top: 30px;
+}
+
+.userdetails{
+    width: 100%;
+    padding: 20px;
+}
+
+.userheader{
+    width: 100%;
+}
+
+.userheader > p{
+    font-size: 30px;
+}
+
+.usermaininfo{
+    width: 100%;
+}
+
+.useradd{
+    width: 100%;
+    display: flex;
+}
+
+.sendmail{
+    width: 100%;
+}
+
+.mailbtn{
+    width: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
 }

@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import Axios from './Axios'
 import './admin.css'
 import {Link} from 'react-router-dom'
-import {Container} from 'react-bootstrap'
+import {Container,Card} from 'react-bootstrap'
 function Adminpanel() {
     const [getapplication, setGetApplication] = useState([])
     console.log(getapplication)
@@ -19,15 +19,17 @@ function Adminpanel() {
                 <div className="userdiv">
                     {
                     getapplication.map(application =>(
-                        <div className="userinfo" key={application._id}>
-                            <p>{application._id}</p>
-                            <p>{application.fullname}</p>
+                        <Card className="userinfo" key={application._id}>
+                            <p><strong>Name:</strong> {application.fullname}</p>
+                            <p><strong>Education:</strong> {application.education?application.education:"Not Mentioned"}</p>
+                            <p><strong>Qualification:</strong> {application.qualification?application.qualification:"Not Mentioned"}</p>
+                            <p><strong>Skills:</strong> {application.skills?application.skills:"Not Mentioned"}</p>
                             <Link
                                 to ={{ pathname:`/userinfo/${application._id}`}}
                             >
                                 <p className="seebtn">See Information</p>
                             </Link>
-                        </div>
+                        </Card>
                     ))
                     }
                 </div>
