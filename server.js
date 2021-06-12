@@ -53,6 +53,6 @@ app.post("/", (req, res) => {
 
 //Listen to port 9000
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static('../mernfront/build'))
+  app.use(express.static("mernfront/build"));
 }
 app.listen(Port, () => console.log(`Listening to port 9000`));
