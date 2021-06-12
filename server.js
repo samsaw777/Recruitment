@@ -30,7 +30,7 @@ mongoose.connect(
 app.get("/getusers", (req, res) => {
   Message.find((err, data) => {
     if (err) {
-      res.status(500).send(err);
+      res.status(500).send(err.message);
     } else {
       res.status(201).send(data);
     }
