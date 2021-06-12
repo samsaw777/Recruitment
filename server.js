@@ -10,10 +10,11 @@ const password = process.env.Database_Password;
 //Middleware
 app.use(express.json());
 
-const Port = process.env.Port || 9000;
+const PORT = process.env.PORT || 9000;
 //Connecting to mongoose
 const connection_url = `mongodb+srv://admin:${password}@cluster0.eewt9.mongodb.net/recruitment?retryWrites=true&w=majority`;
-mongoose.connect(connection_url,
+mongoose.connect(
+  connection_url,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Connected to database");
@@ -54,4 +55,4 @@ app.post("/", (req, res) => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("mernfront/build"));
 }
-app.listen(Port, () => console.log(`Listening to port 9000`));
+app.listen(PORT, () => console.log(`Listening to port 9000`));
