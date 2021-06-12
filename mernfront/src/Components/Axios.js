@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Axios = axios.create({
-  baseUrl: "https://recruitmentmernstack.herokuapp.com",
+  baseUrl: "http://localhost:9000",
 });
 
 export default Axios;
