@@ -11,10 +11,12 @@ const password = process.env.Database_Password;
 app.use(express.json());
 
 const PORT = process.env.PORT || 9000;
+
+//mongodb+srv:admin:vMgSSZSmpHaBppzI@cluster0.eewt9.mongodb.net/recruitment?retryWrites=true&w=majority
 //Connecting to mongoose
 const connection_url = `mongodb+srv://admin:${password}@cluster0.eewt9.mongodb.net/recruitment?retryWrites=true&w=majority`;
 mongoose.connect(
-  connection_url,
+  process.env.MONGODB_URI || connection_url,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Connected to database");
