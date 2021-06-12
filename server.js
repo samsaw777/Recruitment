@@ -9,8 +9,23 @@ const password = process.env.Database_Password;
 const cors = require("cors");
 const path = require("path");
 //Middleware
-app.use(express.json());
+app.use((req, response, next) => {
+  response.setHeader("Access-Control-Allow-Origin", "*");
+  response.setHeader("Access-Control-Allow-Credentials", "true");
+  response.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,OPTIONS,POST,PUT"
+  );
+  response.setHeader(
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+  );
+
+  next();
+});
+
 app.use(cors());
+app.use(express.json());
 const PORT = process.env.PORT || 9000;
 
 //mongodb+srv:admin:vMgSSZSmpHaBppzI@cluster0.eewt9.mongodb.net/recruitment?retryWrites=true&w=majority
@@ -58,7 +73,7 @@ app.post("/", (req, res) => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("mernfront/build"));
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "mernfront/build", "index.html"));
+    res.sendFile(path.join(__dirname, "mernfront", "build", "index.html"));
   });
 }
 app.listen(PORT, () => console.log(`Listening to port 9000`));
