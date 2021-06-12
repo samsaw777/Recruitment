@@ -7,7 +7,7 @@ require("dotenv").config();
 var ObjectId = require("mongodb").ObjectID;
 const password = process.env.Database_Password;
 const cors = require("cors");
-
+const path = require("path");
 //Middleware
 app.use(express.json());
 app.use(cors());
@@ -57,5 +57,8 @@ app.post("/", (req, res) => {
 //Listen to port 9000
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("mernfront/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
 }
 app.listen(PORT, () => console.log(`Listening to port 9000`));
