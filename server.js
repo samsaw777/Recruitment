@@ -6,10 +6,11 @@ const bodyparser = require("body-parser");
 require("dotenv").config();
 var ObjectId = require("mongodb").ObjectID;
 const password = process.env.Database_Password;
+const cors = require("cors");
 
 //Middleware
 app.use(express.json());
-
+app.use(cors());
 const PORT = process.env.PORT || 9000;
 
 //mongodb+srv:admin:vMgSSZSmpHaBppzI@cluster0.eewt9.mongodb.net/recruitment?retryWrites=true&w=majority
