@@ -13,8 +13,7 @@ app.use(express.json());
 const Port = process.env.Port || 9000;
 //Connecting to mongoose
 const connection_url = `mongodb+srv://admin:${password}@cluster0.eewt9.mongodb.net/recruitment?retryWrites=true&w=majority`;
-mongoose.connect(
-  process.env.MONGODB_URI || connection_url,
+mongoose.connect(connection_url,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Connected to database");
