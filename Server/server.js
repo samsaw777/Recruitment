@@ -14,7 +14,7 @@ const Port = process.env.Port || 9000;
 //Connecting to mongoose
 const connection_url = `mongodb+srv://admin:${password}@cluster0.eewt9.mongodb.net/recruitment?retryWrites=true&w=majority`;
 mongoose.connect(
-  connection_url,
+  process.env.MONGODB_URI || connection_url,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Connected to database");
@@ -52,5 +52,6 @@ app.post("/", (req, res) => {
 });
 
 //Listen to port 9000
-
+if (process.env.NODE_ENV === "production") {
+}
 app.listen(Port, () => console.log(`Listening to port 9000`));
