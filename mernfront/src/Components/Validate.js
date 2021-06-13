@@ -1,4 +1,4 @@
-const Axios = require("axios");
+import axios from 'axios'
 export default function Validate(value, fun, initial) {
   let errors = {};
   if (
@@ -64,21 +64,22 @@ export default function Validate(value, fun, initial) {
   } else {
     var complete =
       value.fullname + " " + value.secondname + " " + value.lastname;
-    Axios.post("/", {
-      fullname: complete,
-      streetone: value.laneone,
-      streettwo: value.lanetwo,
-      city: value.city,
-      state: value.state,
-      pincode: value.pincode,
-      country: value.country,
-      number: value.phonenumber,
-      email: value.email,
-      birthdate: value.birthdate,
-      education: value.education,
-      skills: value.skills,
-      qualification: value.qualification,
-    })
+    axios
+      .post("/", {
+        fullname: complete,
+        streetone: value.laneone,
+        streettwo: value.lanetwo,
+        city: value.city,
+        state: value.state,
+        pincode: value.pincode,
+        country: value.country,
+        number: value.phonenumber,
+        email: value.email,
+        birthdate: value.birthdate,
+        education: value.education,
+        skills: value.skills,
+        qualification: value.qualification,
+      })
       .then((res) => {
         console.log(res, "Signature added!");
         fun(initial);

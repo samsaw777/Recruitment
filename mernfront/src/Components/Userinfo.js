@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Container } from "react-bootstrap";
-import Axios from "./Axios";
+// import Axios from "./Axios";
+import axios from "axios"
 import "./admin.css";
 function Userinfo() {
   const { id } = useParams();
   const [userinfo, setUserinfo] = useState({});
   useEffect(() => {
-    Axios.get(`/userinnfo/${id}`).then((res) => {
+    axios.get(`/userinnfo/${id}`).then((res) => {
       setUserinfo(res.data);
     });
   }, []);
