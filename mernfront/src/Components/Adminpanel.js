@@ -8,7 +8,7 @@ function Adminpanel() {
   const [getapplication, setGetApplication] = useState([]);
   console.log(getapplication);
   useEffect(() => {
-    axios.get("/getusers").then((res) => {
+    axios.get("/getusers/info").then((res) => {
       console.log(res.data);
       setGetApplication(res.data);
     });

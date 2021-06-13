@@ -65,7 +65,7 @@ export default function Validate(value, fun, initial) {
     var complete =
       value.fullname + " " + value.secondname + " " + value.lastname;
     axios
-      .post("/", {
+      .post("/sendusers", {
         fullname: complete,
         streetone: value.laneone,
         streettwo: value.lanetwo,

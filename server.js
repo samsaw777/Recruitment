@@ -42,7 +42,7 @@ mongoose.connect(
 // api routing
 // app.get('/',(req,res)=>res.status(200).send("Hello World!"))
 
-app.get("/getusers", (req, res) => {
+app.get("/getusers/info", (req, res) => {
   Message.find((err, data) => {
     if (err) {
       res.status(500).send(err.message);
@@ -58,7 +58,7 @@ app.get("/userinnfo/:id", (req, res) => {
     .catch((err) => res.status(500).send(err));
 });
 
-app.post("/", (req, res) => {
+app.post("/sendusers", (req, res) => {
   const message = req.body;
   Message.create(message, (err, data) => {
     if (err) {
